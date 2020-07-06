@@ -16,6 +16,6 @@ steps:
    - '--region'
    - 'us-central1'
    - '--platform'
-   - 'managed'
+   - '-managed'
  images:
  - 'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA'

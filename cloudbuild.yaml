@@ -18,14 +18,14 @@ steps:
   # Deploy container image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      - 'run'
-      - 'deploy'
-      - 'comparison-site-client-3'
-      - '--image'
-      - 'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA'
-      - '--region'
-      - 'us-central1'
-      - '--platform'
-      - 'managed'
+    - 'run'
+    - 'deploy'
+    - 'comparison-site-client-3'
+    - '--image'
+    - 'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA'
+    - '--region'
+    - 'us-central1'
+    - '--platform'
+    - 'managed'
   images:
   - 'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA'

@@ -1,31 +1,25 @@
-steps:
-  # build the container image
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      [
-        'build',
-        '-t',
-        'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA',
-        '.',
-      ]
-  # push the container image to Container Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      [
-        'push',
-        'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA',
-      ]
-  # Deploy container image to Cloud Run
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args:
-    - 'run'
-    - 'deploy'
-    - 'comparison-site-client-3'
-    - '--image'
-    - 'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA'
-    - '--region'
-    - 'us-central1'
-    - '--platform'
-    - '-managed'
-  images:
+---
+images:
   - 'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA'
+steps:
+  - args:
+      - build
+      - '-t'
+      - 'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA'
+      - '.'
+    name: gcr.io/cloud-builders/docker
+  - args:
+      - push
+      - 'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA'
+    name: gcr.io/cloud-builders/docker
+  - args:
+      - run
+      - deploy
+      - comparison-site-client-3
+      - '--image'
+      - 'gcr.io/comparison-site-client-2/comparison-site-client-3:$COMMIT_SHA'
+      - '--region'
+      - us-central1
+      - '--platform'
+      - managed
+    name: gcr.io/cloud-builders/gcloud

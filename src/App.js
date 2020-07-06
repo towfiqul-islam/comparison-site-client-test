@@ -8,7 +8,7 @@ function App() {
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
         <p>
-          Hello <code>src/App.js</code> React.
+          Automation is awesome!! <code>src/App.js</code> React.
         </p>
         <a
           className='App-link'
